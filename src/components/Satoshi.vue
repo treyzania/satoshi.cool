@@ -16,7 +16,7 @@
       fill="none"
       stroke="#020202"
       stroke-linejoin="round"
-      stroke-width="1.5"
+      stroke-width="1.6"
     />
     <!-- eslint-enable max-len -->
     <use
