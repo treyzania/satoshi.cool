@@ -20,6 +20,7 @@ body {
   font-family: 'Lora', serif;
   font-family: 'Quicksand', sans-serif;
   margin: 0px;
-  font-size: 1.9vmin;
+  font-size: 2.5vmin;
+  overflow-x: hidden;
 }
 </style>

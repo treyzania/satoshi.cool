@@ -28,7 +28,7 @@
 }
 
 .satoshi {
-  width: 15vmin;
+  width: 20vmin;
   max-height: 80vh;
   stroke-dasharray: 75;
   stroke-dashoffset: 75;
