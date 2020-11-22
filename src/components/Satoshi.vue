@@ -1,13 +1,7 @@
 <template>
   <svg
     class="satoshi"
-    version="1.1"
     viewBox="-1.025 -1 18.139 51.15"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:cc="http://creativecommons.org/ns#"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
   >
     <!-- eslint-disable max-len -->
     <path
@@ -27,7 +21,17 @@
 </template>
 
 <style scoped>
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .satoshi {
-  width: 8rem
+  width: 15vmin;
+  max-height: 80vh;
+  stroke-dasharray: 75;
+  stroke-dashoffset: 75;
+  animation: dash .7s linear forwards;
 }
 </style>
