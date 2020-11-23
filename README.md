@@ -6,27 +6,5 @@
 
 ## Contributing
 
-Built with the [vue cli](https://cli.vuejs.org).
+It's just a plain HTML+CSS+JS file, edit and reload as necessary.
 
-### Project setup
-```
-yarn install
-```
-
-#### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-#### Compiles and minifies for production
-```
-yarn build
-```
-
-#### Lints and fixes files
-```
-yarn lint
-```
-
-#### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

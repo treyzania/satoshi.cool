@@ -1,0 +1,165 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>satoshi.cool</title>
+
+    <!-- Inline script and style to avoid making extra requests. -->
+    <script>
+      function update() {
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
+          .then(resp => resp.json())
+          .then(data => document.getElementById('ticker').innerHTML = (data.bitcoin.usd / 100000000).toFixed(8) + ' USD');
+      }
+      setInterval(update, 5000);
+      update();
+    </script>
+    
+    <style>
+      /* We could include just the ranges we need and decrease the footprint
+       * some more, but since we'd need to make requests for the fonts anyways,
+       * it's not worth the effort.  If we wanted to go that far then we should
+       * look into using different fonts, but these are nice.
+       *
+       * Really makes me wonder why webpack doesn't want to embed this, it's
+       * not like the font ranges are going to change, is it?
+       */
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,500&family=Quicksand:wght@400;500;700&display=swap');
+
+      .centered {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .symbol { flex: 1 }
+      .name { margin-bottom: 0; }
+      .phonetic { margin-top: 0; }
+      .decimal { margin-top: 1vmin; }
+
+      .primary {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .even {
+        flex-direction: column;
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-family: 'Lora', serif;
+        font-weight: normal;
+      }
+
+      h3 {
+        font-family: 'Lora', serif;
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      body {
+        font-family: 'Lora', serif;
+        font-family: 'Quicksand', sans-serif;
+        margin: 0px;
+        font-size: 2.5vmin;
+        overflow-x: hidden;
+      }
+
+      /* CSS animation for Cool S symbol */
+      @keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      .satoshi {
+        width: 20vmin;
+        max-height: 80vh;
+        stroke-dasharray: 75;
+        stroke-dashoffset: 75;
+        animation: dash .7s linear forwards;
+      }
+
+      /* CSS animation for explanation */
+      @keyframes fadeExpandIn {
+        to {
+          max-width: 100%;
+          opacity: 100%;
+        }
+      }
+
+      .def-wrapper {
+        max-width: 0px;
+        opacity: 0%;
+        animation-duration: 3s; /* the duration of the animation */
+        animation-timing-function: ease; /* how the animation will behave */
+        animation-delay: 0.8s; /* how long to delay the animation from starting */
+        animation-iteration-count: 1; /* how many times the animation will play */
+        animation-name: fadeExpandIn; /* the name of the animation we defined above */
+        animation-fill-mode: forwards;
+      }
+
+      .def {
+        margin-left: 3.75vmin;
+        white-space: nowrap;
+        margin-bottom: 4.25vmin;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 100%;
+        }
+      }
+
+      .ticker {
+        justify-self: flex-end;
+
+        font-size: 1rem;
+        opacity: 0%;
+        animation: 3s ease 1s 1 normal forwards running fadeIn;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+    <noscript>Congratulations, satoshi.cool mostly works without JavaScript enabled!</noscript>
+
+    <div class="primary">
+
+      <div class="centered symbol">
+        <svg class="satoshi" viewBox="-1.025 -1 18.139 51.15">
+          <path id="path4" d="m 8.0702 38.505 v -10.574 l -7.938 -6.609 v -10.575 l 7.938 -10.574 7.9371 10.574 v 10.575 l -4.0165 3.3045" fill="none" stroke="#020202" stroke-linejoin="round" stroke-width="1.6"></path>
+          <use transform="rotate(180 8.0697 24.646)" xlink:href="#path4"></use>
+        </svg>
+
+        <div class="def-wrapper">
+          <div class="def">
+            <h1 class="name">satoshi</h1>
+            <h3 class="phonetic">/səˈtoʊʃi/</h3>
+            The smallest monetary unit in the <br> Bitcoin digital payment system, <br> equal to one hundred millionth of <br> a bitcoin. 
+            <div class="decimal">(0.00000001 BTC)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="centered ticker">
+        <span id="ticker"></span>
+      </div>
+
+    </div>
+
+    <!-- blockchain.com is/was pro-Bcash, use blockstream.info -->
+    <div class="centered even"><a href="https://www.blockstream.info/address/36dafGyDx7rsTg6TKWjnCKz6XfK3PwfCCk">36dafGyDx7rsTg6TKWjnCKz6XfK3PwfCCk</a>
+
+    <!-- Should use GitLab, but that's not an easy battle to win. -->
+    <a href="https://github.com/nminchow/satoshi.cool">Github</a></div>
+
+  </body>
+</html>
+

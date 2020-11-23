@@ -4,7 +4,8 @@
 set -e
 
 # build
-yarn run build
+mkdir dist
+cp index.html dist/index.html
 
 # navigate into the build output directory
 cd dist
