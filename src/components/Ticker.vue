@@ -15,7 +15,6 @@ export default {
         ids: ['bitcoin'],
         vs_currencies: ['usd'],
       });
-      console.log(usd);
       rate.value = usd / 100000000;
     };
     window.setInterval(updateValue, 5000);
